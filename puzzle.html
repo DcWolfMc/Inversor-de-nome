@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle Hanoi</title>
+    <script>
+        var Escrita= ""
+        var A = "A"
+        var C = "C"
+        var B = "B"
+        var moviments = 0
+
+        function movimentos(n, ori, aux, dest) {
+            var resultado = "";
+            if(n>=1){
+                movimentos((n-1), ori, dest, aux );
+                    moviments ++;
+                    resultado +=("Movimento: "+ori+" -> "+dest+" ("+moviments+")<br>");
+                    
+                    document.forms["form2"]["msg"]+= resultado;
+                    resultado = "";
+                    
+                movimentos((n-1), aux, ori, dest );
+                
+            }
+            //document.write(resultado);
+        }
+        function start(){
+            var n = document.forms["form-torre"]["numero"].value
+                movimentos(n, A, B, C);
+
+        }
+    </script>
+    <style>
+        #form-torre{
+            position: absolute;
+            left: 20%;
+            width: 80%;
+            top:0%
+        }
+        #esq {
+        position: absolute;
+         width: 20%;
+         height: 100%;
+         border: none;
+        top: 0px;
+        left: 0px;}
+    </style>
+</head>
+<body>
+    <iframe id="esq" src="./Side2.html" name="esq"></iframe>
+    <div>
+        <form id="form-torre">
+            <legend>Torre de Hanoi</legend>
+            <input type="number" id="numero"name="numero">
+            <input type="button" id="btnHanoi" name="btnHanoi" value=" Start " onclick="start()">
+        </form>
+    </div>
+    <p id="paragrafo"></p>
+</body>
+</html>

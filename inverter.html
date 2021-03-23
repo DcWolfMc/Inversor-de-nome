@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inverter nome</title>
+    <script>
+        function inverter(){
+            var nome = document.forms["form-inversor"]["texto"].value
+            var auxiliar = " "
+            var inverso = ""
+            for(i = 0; i < nome.length; i++){
+                if(nome[i] == " " || nome[i] == "." || nome[i] == ""){
+                    auxiliar += inverso;
+                    inverso = auxiliar;
+                    auxiliar = " ";
+                }else{
+                    auxiliar += nome[i];
+                }
+        }
+        auxiliar += inverso;
+        inverso = auxiliar;
+        auxiliar = "";
+         document.forms["form-inversor"]["resultado"].value = inverso;
+    } // no final disso, a inversa vai ter as palavras escritas ao contrario de nome.
+    </script>
+    <style>
+
+        div {
+            position: absolute;
+            align-items: center;
+            width: 180px;
+            height: 100px;
+            border: none;
+            background-color: lightgray;
+            padding-right: 5px;
+            text-align: right;
+            vertical-align: baseline;
+        }
+        #form-inversor{
+            text-align: center;
+            align-content: center;
+        }
+    </style>
+</head>
+<body>
+    <header></header>
+    <div>
+        <form id="form-inversor">
+            <legend id="legend"> Inversor de nomes.</legend>
+            <input type="text" nome="texto" id="texto" value="" >
+            <input type="text" nome="resultado" id="resultado" disabled >
+            <input type="button" value=" Inverter " onclick="inverter()"></button>
+        </form>
+    </div>
+</body>
+</html>
