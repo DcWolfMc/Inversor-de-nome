@@ -7,23 +7,29 @@
     <title>Inverter nome</title>
     <script>
         function inverter(){
-            var nome = document.forms["form-inversor"]["texto"].value
-            var auxiliar = " "
-            var inverso = ""
-            for(i = 0; i < nome.length; i++){
-                if(nome[i] == " " || nome[i] == "." || nome[i] == ""){
-                    auxiliar += inverso;
-                    inverso = auxiliar;
-                    auxiliar = " ";
-                }else{
-                    auxiliar += nome[i];
+            var nome = document.forms["form-inversor"]["texto"].value.trim();
+            for (i = nome.length;i>0;i--){
+                if(nome[i] == " "){
+                    var sobrenome = nome.slice(i+1, nome.length);
+                    nome.trim();
+                    break
                 }
+            }
+            var texto = (sobrenome+", ");
+            for(i= 0;i<nome.length;i++){
+                if(nome[i] == " " ){
+                    texto+= (nome.slice(0,i)+" ");
+                    break
+                }
+            }
+            for(i=0; i<nome.length;i++){
+                if(nome[i] == " "){
+                    texto+= (nome.slice(i+1,i+2)+ ". ")
+                }
+            }
+            texto.trim();
+            document.forms["form-inversor"]["resultado"].value = texto
         }
-        auxiliar += inverso;
-        inverso = auxiliar;
-        auxiliar = "";
-         document.forms["form-inversor"]["resultado"].value = inverso;
-    } // no final disso, a inversa vai ter as palavras escritas ao contrario de nome.
     </script>
     <style>
 
