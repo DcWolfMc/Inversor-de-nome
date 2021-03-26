@@ -8,9 +8,10 @@
     <script>
         function inverter(){
             var nome = document.forms["form-inversor"]["texto"].value.trim();
-            for (i = nome.length;i>0;i--){
+            for (i = nome.length; i>0 ; i--){
                 if(nome[i] == " "){
                     var sobrenome = nome.slice(i+1, nome.length);
+                    nome = nome.slice(0,i);
                     nome.trim();
                     break
                 }
